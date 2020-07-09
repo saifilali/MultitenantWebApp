@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultitenantWebApp", "MultitenantWebApp\MultitenantWebApp.csproj", "{FDEBFE72-FA72-4666-AA94-3E12E1F9C30F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDEBFE72-FA72-4666-AA94-3E12E1F9C30F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEBFE72-FA72-4666-AA94-3E12E1F9C30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEBFE72-FA72-4666-AA94-3E12E1F9C30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEBFE72-FA72-4666-AA94-3E12E1F9C30F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C2B2E5A-3606-431C-9385-E9DC3647EE70}
+	EndGlobalSection
+EndGlobal
