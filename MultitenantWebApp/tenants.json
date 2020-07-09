@@ -1,23 +1,30 @@
 [
   {
     "Id": 1,
-    "Host": "sme1:5000",
+    "Host": "localhost:50809",
     "DatabaseType": 1,
-    "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=MultitenantWeb_SME;Trusted_Connection=True;MultipleActiveResultSets=true",
-    "Name": "Small biz 1"
+    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_BC;Trusted_Connection=True;",
+    "Name": "Big corp local host"
   },
   {
     "Id": 2,
     "Host": "sme2:5000",
     "DatabaseType": 1,
-    "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=MultitenantWeb_SME;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_SME;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Small biz 2"
   },
   {
     "Id": 3,
     "Host": "bigcorp:5000",
-    "DatabaseType": 2,
-    "ConnectionString": "Server=localhost;Database=multitenant;Uid=demo;Pwd=demo",
+    "DatabaseType": 1,
+    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_BC;Trusted_Connection=True;",
     "Name": "Big corp"
+  },
+  {
+    "Id": 4,
+    "Host": "sme1:5000",
+    "DatabaseType": 1,
+    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_SME;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "Name": "Small biz 1"
   }
 ]

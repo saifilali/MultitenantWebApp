@@ -16,13 +16,14 @@ namespace MultitenantWebApp.Extensions
 
         public FileTenantProvider(IHttpContextAccessor accessor)
         {
-            _host = accessor.HttpContext.Request.Host.ToString();
+            _host = accessor.HttpContext?.Request?.Host.ToString();
         }
 
         public Tenant GetTenant()
         {
             LoadTenants();
 
+            //return _tenants.FirstOrDefault(t => t.Host.ToLower() == "localhost:50809".ToLower());       //Uncomment for migration
             return _tenants.FirstOrDefault(t => t.Host.ToLower() == _host.ToLower());
         }
 

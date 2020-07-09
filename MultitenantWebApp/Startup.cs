@@ -36,6 +36,7 @@ namespace MultitenantWebApp
             services.AddDbContext<ApplicationDbContext>(options => { });
             //services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddHttpContextAccessor();
             services.AddControllersWithViews();
             services.AddScoped<ITenantProvider, FileTenantProvider>();
         }
@@ -54,7 +55,7 @@ namespace MultitenantWebApp
                 app.UseHsts();
             }
 
-            //app.UseMiddleware<MissingTenantMiddleware>(Configuration["MissingTenantUrl"]);
+            app.UseMiddleware<MissingTenantMiddleware>(Configuration["MissingTenantUrl"]);
 
             //app.UseHttpsRedirection();
 
@@ -65,7 +66,7 @@ namespace MultitenantWebApp
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
