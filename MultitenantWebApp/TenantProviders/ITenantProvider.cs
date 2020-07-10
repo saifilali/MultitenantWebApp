@@ -9,6 +9,5 @@ namespace MultitenantWebApp.Extensions
     public interface ITenantProvider
     {
         Tenant GetTenant();
-        Tenant[] ListTenants();
     }
 }

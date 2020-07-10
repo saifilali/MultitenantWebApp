@@ -14,6 +14,9 @@ using Microsoft.Extensions.Hosting;
 using MultitenantWebApp.Data;
 using MultitenantWebApp.Extensions;
 using MultitenantWebApp.Models;
+using MultitenantWebApp.Services;
+using MultitenantWebApp.TenantProviders;
+using MultitenantWebApp.TenantSources;
 
 namespace MultitenantWebApp
 {
@@ -41,7 +44,8 @@ namespace MultitenantWebApp
             services.AddHttpContextAccessor();
             services.AddMvc();
             services.AddControllersWithViews();
-            services.AddScoped<ITenantProvider, FileTenantProvider>();
+            services.AddSingleton<ITenantSource, FileTenantSource>();
+            services.AddScoped<ITenantProvider, WebTenantProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,11 +83,12 @@ namespace MultitenantWebApp
             });
 
             var options = new DbContextOptions<ApplicationDbContext>();
-            var provider = new FileTenantProvider();
+            var source = new FileTenantSource();
+            var provider = new ControllableTenantProvider();
 
-            foreach (var tenant in provider.ListTenants())
+            foreach (var tenant in source.ListTenants())
             {
-                provider.SetHostName(tenant.Host);
+                provider.Tenant = tenant;
 
                 try
                 {
@@ -95,12 +100,11 @@ namespace MultitenantWebApp
                         {
                             dbContext.GenerateData(tenant.Id);
                         }
-                        Debug.WriteLine("Products Count : " +  dbContext.Products.Count());
                     }
                 }
                 catch (Exception ex)
                 {
-
+                    Debug.WriteLine(ex);
                 }
             }
         }
