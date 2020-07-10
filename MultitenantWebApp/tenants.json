@@ -1,7 +1,7 @@
 [
   {
     "Id": 1,
-    "Host": "localhost:50809",
+    "Host": "localhost:5000",
     "DatabaseType": 1,
     "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_DB1;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Tenant 1 with SQL DB1"
