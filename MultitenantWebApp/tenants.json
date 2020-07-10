@@ -3,28 +3,35 @@
     "Id": 1,
     "Host": "localhost:5000",
     "DatabaseType": 1,
-    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_DB1;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "ConnectionString": "Server=selecsoftware01;Database=Multitenant_T1DB1;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Tenant 1 with SQL DB1"
   },
   {
     "Id": 2,
-    "Host": "sqldbtenant1:5000",
+    "Host": "sqldbtenant2:5000",
     "DatabaseType": 1,
-    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_DB2;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "ConnectionString": "Server=selecsoftware01;Database=Multitenant_T2DB2;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Tenant 2 with SQL DB2"
   },
   {
     "Id": 3,
-    "Host": "sqldbtenant2:5000",
+    "Host": "sqldbtenant3:5000",
     "DatabaseType": 1,
-    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_DB2;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "ConnectionString": "Server=selecsoftware01;Database=Multitenant_T3DB2;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Tenant 3 with SQL DB2"
   },
   {
     "Id": 4,
-    "Host": "sqllitedbtenant1:5000",
+    "Host": "mysqldbtenant4:5000",
+    "DatabaseType": 2,
+    "ConnectionString": "Server=localhost;Database=Multitenant_T4DB1;Uid=root;Pwd=mysql",
+    "Name": "Tenant 4 with MySQL DB1"
+  },
+  {
+    "Id": 5,
+    "Host": "sqllitedbtenant5:5000",
     "DatabaseType": 3,
-    "ConnectionString": "Data source=sqllitedbtenant1.db",
-    "Name": "Tenant 3 with SQL Lite DB1"
+    "ConnectionString": "Data source=Multitenant_T5DB1.db",
+    "Name": "Tenant 5 with SQL Lite DB1"
   }
 ]

@@ -23,15 +23,15 @@ namespace MultitenantWebApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (_tenant.DatabaseType == 1)
+            if (_tenant.DatabaseType == (int)EnumDb.SQL)
             {
                 optionsBuilder.UseSqlServer(_tenant.ConnectionString);
             }
-            else if (_tenant.DatabaseType == 2)
+            else if (_tenant.DatabaseType == (int)EnumDb.MySQL)
             {
                 optionsBuilder.UseMySql(_tenant.ConnectionString);
             }
-            else if (_tenant.DatabaseType == 3)
+            else if (_tenant.DatabaseType == (int)EnumDb.SQLLite)
             {
                 optionsBuilder.UseSqlite(_tenant.ConnectionString);
             }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -94,6 +95,7 @@ namespace MultitenantWebApp
                         {
                             dbContext.GenerateData(tenant.Id);
                         }
+                        Debug.WriteLine("Products Count : " +  dbContext.Products.Count());
                     }
                 }
                 catch (Exception ex)

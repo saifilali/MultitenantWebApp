@@ -24,6 +24,16 @@ namespace MultitenantWebApp.Data
             {
                 GenerateForTenant3(dbContext);
             }
+
+            if (tenantId == 4)
+            {
+                GenerateForTenant4(dbContext);
+            }
+
+            if (tenantId == 5)
+            {
+                GenerateForTenant5(dbContext);
+            }
         }
 
         private static void GenerateForTenant1(ApplicationDbContext dbContext)
@@ -138,6 +148,84 @@ namespace MultitenantWebApp.Data
                 Name = "La Trappe Quadrupel (10%)",
                 Description = "In 1991, The Koningshoeven brewery baptized her beloved Quadrupel under the approving glance of the monks. A closely guarded recipe became reality, and the first Quadrupel beer in the world was born.",
                 Category = beersCategory
+            });
+
+            dbContext.SaveChanges();
+        }
+        
+        private static void GenerateForTenant4(ApplicationDbContext dbContext)
+        {
+            var mainCourseCategory = new ProductCategory { Name = "Main Course" };
+            var appetizersCategory = new ProductCategory { Name = "Appetizers" };
+
+            dbContext.Categories.Add(mainCourseCategory);
+            dbContext.Categories.Add(appetizersCategory);
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Pizza",
+                Description = "Chicken barbeque flavor.",
+                Category = mainCourseCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Steak",
+                Description = "Tomahawk steak with pepper and cellaris.",
+                Category = mainCourseCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Samosa",
+                Description = "a triangular savory pastry fried in ghee or oil, containing spiced vegetables or meat.",
+                Category = appetizersCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Southwestern Egg Roll",
+                Description = "Crispy Baked or Fried Southwest Egg Rolls loaded with Mexican spiced chicken, beans, tomatoes, rice, avocado and melty cheese with Cilantro Lime Ranch.",
+                Category = appetizersCategory
+            });
+
+            dbContext.SaveChanges();
+        }
+
+        private static void GenerateForTenant5(ApplicationDbContext dbContext)
+        {
+            var carsCategory = new ProductCategory { Name = "Cars" };
+            var trucksCategory = new ProductCategory { Name = "Trucks" };
+
+            dbContext.Categories.Add(carsCategory);
+            dbContext.Categories.Add(trucksCategory);
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Coupe",
+                Description = "A coupe has historically been considered a two-door car with a trunk and a solid roof. This would include cars like a Ford Mustang or Audi A5—or even two-seat sports cars like the Chevrolet Corvette and Porsche Boxster.",
+                Category = carsCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Station Wagon",
+                Description = "Wagons are similar to sedans but have an extended roofline and a hatch door at the rear instead of a trunk. Some, like the Subaru Outback or Audi A4 Allroad.",
+                Category = carsCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Ram 1500 Classic",
+                Description = "The Ram 1500 Classic is a continuation of the great fourth-generation (2010–present) Ram 1500. .",
+                Category = trucksCategory
+            });
+
+            dbContext.Products.Add(new Product
+            {
+                Name = "Ford F-250",
+                Description = "Another great heavy-duty truck arrives at ninth on our list of best pickup trucks for 2020.",
+                Category = trucksCategory
             });
 
             dbContext.SaveChanges();
