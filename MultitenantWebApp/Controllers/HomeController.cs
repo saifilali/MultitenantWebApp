@@ -26,7 +26,7 @@ namespace MultitenantWebApp.Controllers
 
         public IActionResult Index()
         {
-            _context.Database.EnsureCreated();
+            //_context.Database.EnsureCreated();
             _context.AddData();
 
             var grouped = from b in _context.Products
@@ -61,14 +61,15 @@ namespace MultitenantWebApp.Controllers
 
         public IActionResult About()
         {
-            //_context.Users.Add(new IdentityUser());
             ViewData["Message"] = _context.TenantId + ";" + _tenantProvider.GetTenant().Id;
+
             return View();
         }
 
         public IActionResult Contact()
         {
             ViewData["Message"] = HttpContext.Request.Host.ToString();
+
             return View();
         }
 
