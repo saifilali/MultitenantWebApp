@@ -23,7 +23,7 @@ namespace MultitenantWebApp.Extensions
             _host = accessor.HttpContext?.Request?.Host.ToString();
         }
 
-        internal FileTenantProvider()
+        public FileTenantProvider()
         {
         }
 
@@ -35,7 +35,7 @@ namespace MultitenantWebApp.Extensions
             return _tenants.FirstOrDefault(t => t.Host.ToLower() == _host.ToLower());
         }
 
-        internal void SetHostName(string host)
+        public void SetHostName(string host)
         {
             _host = host;
         }

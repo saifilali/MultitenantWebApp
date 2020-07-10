@@ -12,12 +12,13 @@ namespace MultitenantWebApp.Data
     {
         public object Create(DbContext context)
         {
-            if (context is ApplicationDbContext dynamicContext)
+            var castedContext = context as IMultitenantDbContext;
+            if (castedContext == null)
             {
-                return new { dynamicContext.TenantId };
+                throw new Exception("Unknown DBContext type");
             }
 
-            throw new Exception("Unknown DBContext type");
+            return new { castedContext.TenantId };
         }
     }
 }

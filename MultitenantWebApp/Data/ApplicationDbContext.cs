@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace MultitenantWebApp.Models
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext, IMultitenantDbContext
     {
         private readonly Tenant _tenant;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ITenantProvider tenantProvider) : base(options)

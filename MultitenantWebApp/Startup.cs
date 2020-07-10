@@ -35,15 +35,16 @@ namespace MultitenantWebApp
             });
 
             services.AddDbContext<ApplicationDbContext>(options => { });
-            //services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddIdentityCore<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>().AddSignInManager();
 
             services.AddHttpContextAccessor();
+            services.AddMvc();
             services.AddControllersWithViews();
             services.AddScoped<ITenantProvider, FileTenantProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public virtual void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -73,6 +74,7 @@ namespace MultitenantWebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
             var options = new DbContextOptions<ApplicationDbContext>();
@@ -82,14 +84,21 @@ namespace MultitenantWebApp
             {
                 provider.SetHostName(tenant.Host);
 
-                using (var dbContext = new ApplicationDbContext(options, provider))
+                try
                 {
-                    dbContext.Database.EnsureCreated();
-
-                    if (dbContext.Products.Count() == 0)
+                    using (var dbContext = new ApplicationDbContext(options, provider))
                     {
-                        dbContext.GenerateData(tenant.Id);
+                        dbContext.Database.EnsureCreated();
+
+                        if (dbContext.Products.Count() == 0)
+                        {
+                            dbContext.GenerateData(tenant.Id);
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+
                 }
             }
         }
