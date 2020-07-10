@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MultitenantWebApp.Data;
 using MultitenantWebApp.Extensions;
 using MultitenantWebApp.Models;
 
@@ -73,6 +74,24 @@ namespace MultitenantWebApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            var options = new DbContextOptions<ApplicationDbContext>();
+            var provider = new FileTenantProvider();
+
+            foreach (var tenant in provider.ListTenants())
+            {
+                provider.SetHostName(tenant.Host);
+
+                using (var dbContext = new ApplicationDbContext(options, provider))
+                {
+                    dbContext.Database.EnsureCreated();
+
+                    if (dbContext.Products.Count() == 0)
+                    {
+                        dbContext.GenerateData(tenant.Id);
+                    }
+                }
+            }
         }
     }
 }

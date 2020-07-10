@@ -3,7 +3,7 @@
     "Id": 1,
     "Host": "localhost:50809",
     "DatabaseType": 1,
-    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_BC;Trusted_Connection=True;",
+    "ConnectionString": "Server=selecsoftware01;Database=MultitenantWebApp_BC;Trusted_Connection=True;MultipleActiveResultSets=true",
     "Name": "Big corp local host"
   },
   {
